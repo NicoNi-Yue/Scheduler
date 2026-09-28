@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard Jadwal Nic-Yue</title>
+    <!-- Tailwind CSS dari CDN supaya gak perlu install macam-macam -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body class="bg-slate-950 text-white min-h-screen font-sans">
+    <!-- Login Form -->
+    <div id="login-container" class="min-h-screen flex items-center justify-center">
+        <form id="login-form" class="bg-slate-900 p-8 rounded-xl shadow-[0_0_20px_rgba(59,130,246,0.3)] flex flex-col gap-5 w-80 border border-blue-500/20">
+            <h2 class="text-2xl font-bold text-blue-400 text-center mb-2">Login Admin</h2>
+            <input id="username" required class="p-3 rounded-lg bg-slate-800 text-white outline-none focus:ring-2 focus:ring-blue-500" placeholder="Username" />
+            <input id="password" required type="password" class="p-3 rounded-lg bg-slate-800 text-white outline-none focus:ring-2 focus:ring-blue-500" placeholder="Password" />
+            <button type="submit" class="bg-blue-600 hover:bg-blue-500 p-3 rounded-lg font-bold transition-all shadow-[0_0_10px_rgba(37,99,235,0.5)]">Masuk</button>
+        </form>
+    </div>
+
+    <!-- Dashboard -->
+    <div id="dashboard-container" class="hidden p-8">
+        <div class="max-w-4xl mx-auto space-y-8">
+            <h1 class="text-3xl font-bold text-blue-400 shadow-blue-500 drop-shadow-md">Dashboard Jadwal Nic-Yue</h1>
+            
+            <!-- Statistik -->
+            <div class="grid grid-cols-2 gap-4">
+                <div class="bg-slate-900 p-6 rounded-xl border border-blue-500/30 shadow-[0_0_15px_rgba(59,130,246,0.15)] relative overflow-hidden">
+                    <h3 class="text-blue-300 font-medium z-10 relative">Tugas Pending</h3>
+                    <p id="pending-count" class="text-5xl font-bold text-blue-500 mt-2 z-10 relative">0</p>
+                    <div class="absolute top-0 right-0 w-24 h-24 bg-blue-500/10 rounded-full blur-2xl -mr-10 -mt-10"></div>
+                </div>
+                <div class="bg-slate-900 p-6 rounded-xl border border-red-500/30 shadow-[0_0_15px_rgba(239,68,68,0.15)] relative overflow-hidden">
+                    <h3 class="text-red-300 font-medium z-10 relative">Tugas Overdue</h3>
+                    <p id="overdue-count" class="text-5xl font-bold text-red-500 mt-2 z-10 relative">0</p>
+                    <div class="absolute top-0 right-0 w-24 h-24 bg-red-500/10 rounded-full blur-2xl -mr-10 -mt-10"></div>
+                </div>
+            </div>
+
+            <!-- Form Tambah -->
+            <form id="task-form" class="bg-slate-900 p-6 rounded-xl border border-slate-800 space-y-5">
+                <h2 class="text-xl font-bold text-blue-400">Tambah Schedule</h2>
+                <div class="grid grid-cols-2 gap-4">
+                    <input id="t-title" required placeholder="Judul Tugas" class="p-3 rounded-lg bg-slate-800 focus:ring-2 focus:ring-blue-500 outline-none" />
+                    <input id="t-subject" required placeholder="Subject / Mata Kuliah" class="p-3 rounded-lg bg-slate-800 focus:ring-2 focus:ring-blue-500 outline-none" />
+                    <input id="t-due" type="datetime-local" required class="p-3 rounded-lg bg-slate-800 focus:ring-2 focus:ring-blue-500 outline-none" />
+                    <select id="t-priority" class="p-3 rounded-lg bg-slate-800 focus:ring-2 focus:ring-blue-500 outline-none">
+                        <option>High Priority</option>
+                        <option>Medium Priority</option>
+                        <option>Low Priority</option>
+                    </select>
+                </div>
+                <textarea id="t-desc" required placeholder="Deskripsi Tugas..." class="w-full p-3 rounded-lg bg-slate-800 focus:ring-2 focus:ring-blue-500 outline-none h-24 resize-none"></textarea>
+                <button type="submit" class="w-full bg-blue-600 hover:bg-blue-500 p-3 rounded-lg font-bold transition-all shadow-[0_0_10px_rgba(37,99,235,0.4)]">Tambahkan Tugas</button>
+            </form>
+
+            <!-- Daftar Tugas -->
+            <div id="task-list" class="space-y-4"></div>
+        </div>
+    </div>
+    <script src="script.js"></script>
+</body>
+</html>
